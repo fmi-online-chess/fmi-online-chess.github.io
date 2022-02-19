@@ -29,6 +29,7 @@ const roomsTemplate = (roomsPromise, onCreateSubmit) => html`
                         <option value="60">60 min</option>
                         <option value="90">90 min</option>
                     </select>
+                    <i class="fas fa-solid fa-chess-clock"></i>
                 </p>
                 <p class="icon-field">
                     <label for="color" class="required-field">Prefered color:</label>
@@ -37,6 +38,7 @@ const roomsTemplate = (roomsPromise, onCreateSubmit) => html`
                         <option value="white">White</option>
                         <option value="black">Black</option>
                     </select>
+                    <i class="fas fa-solid fa-chess-pawn"></i>
                 </p>
                 <p class="submit-input">
                     <input value="Create room" type="submit" />
@@ -47,7 +49,7 @@ const roomsTemplate = (roomsPromise, onCreateSubmit) => html`
         <section class="join">
             <h2>Join Room</h2>
             <ul>
-                ${until(roomsPromise, spinner())}
+                ${until(roomsPromise, spinner("Loading rooms"))}
             </ul>
         </section>
     </div>
@@ -61,7 +63,7 @@ const roomTemplate = room => html`
 const lobbyTemplate = (roomDataPromise) => html`
 <div class="wrapper form">
     <h1 class="form-title">Lobby</h1>
-    ${until(roomDataPromise, spinner())}
+    ${until(roomDataPromise, spinner("Loading"))}
 </div>`;
 
 export function roomsPage(ctx) {
